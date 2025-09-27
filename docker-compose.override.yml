@@ -1,0 +1,15 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: socialnetwork-phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql # имя сервиса в docker-compose.yml (точно должно совпадать)
+      PMA_PORT: 3306
+      PMA_USER: sail # совпадает с DB_USERNAME
+      PMA_PASSWORD: password
+    depends_on:
+      - mysql
+    networks:
+      - sail # вот тут должна быть сеть Sail
